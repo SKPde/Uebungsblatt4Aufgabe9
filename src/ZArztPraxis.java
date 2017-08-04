@@ -1,6 +1,8 @@
-import Prog1Tools.IOTools;
+import java.util.Scanner;
+
 public class ZArztPraxis {  
   public static void warteZimmer (WarteSchlange wl) {
+	Scanner in = new Scanner(System.in);
     int aktion = 0; 
     int jahr;
     String name;
@@ -10,12 +12,15 @@ public class ZArztPraxis {
       System.out.println(" Patient anmelden (1)," +
                          " Patient drannehmen (2)," + 
                          " Programmende (0)");
-      aktion = IOTools.readInteger("Ihre Wahl: ");
+      System.out.print("Ihre Wahl: ");
+      aktion = in.nextInt();
       if (aktion == 1) {
         System.out.print("Patienten-Aufnahme:");
-        name = IOTools.readLine("  Name des Patienten: ");
-        System.out.print("                   ");
-        jahr = IOTools.readInteger("  Geburtsjahr: ");
+        System.out.print("Name: ");
+        name = in.next();
+        System.out.println("                   ");
+        System.out.println("Geburtsjahr: ");
+        jahr = in.nextInt();
         p = new ZPatient(name,jahr);
         wl.anmelden(p);
       }
