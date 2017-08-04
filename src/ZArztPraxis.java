@@ -1,8 +1,10 @@
 import java.util.Scanner;
 
 public class ZArztPraxis {  
-  public static void warteZimmer (WarteSchlange wl) {
-	Scanner in = new Scanner(System.in);
+  private static Scanner in;
+
+public static void warteZimmer (WarteSchlange wl) {
+	in = new Scanner(System.in);
     int aktion = 0; 
     int jahr;
     String name;
