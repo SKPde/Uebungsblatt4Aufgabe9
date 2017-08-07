@@ -19,10 +19,10 @@ public static void warteZimmer (WarteSchlange wl) {
       if (aktion == 1) {
         System.out.print("Patienten-Aufnahme:");
         System.out.print("Name: ");
-        name = in.next();
+        name = (String) in.next();
         System.out.println("                   ");
         System.out.println("Geburtsjahr: ");
-        jahr = in.nextInt();
+        jahr = (int) in.nextInt();
         p = new ZPatient(name,jahr);
         wl.anmelden(p);
       }

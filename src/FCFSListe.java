@@ -11,6 +11,7 @@ public class FCFSListe implements WarteSchlange{
 		if(anfang == null) {
 			anfang = p;
 			ende = p;
+			p.next = p;
 		} else {
 			ende.next = p;
 			ende = p;
@@ -20,7 +21,19 @@ public class FCFSListe implements WarteSchlange{
 	@Override
 	public ZPatient derNaechsteBitte() {
 		// TODO Auto-generated method stub
-		return null;
+		ZPatient ausgabe = null;
+		
+		if(anfang != null) {
+			ausgabe = anfang;
+		}
+		if(anfang.next != null) {
+			anfang = anfang.next;
+		} else {
+			return null;
+		}
+		
+		
+		return ausgabe;
 	}
 
 }
