@@ -4,6 +4,7 @@ public class FCFSListe implements WarteSchlange{
 	public ZPatient anfang;
 	public ZPatient ende;
 	
+	boolean count = false;
 	
 	@Override
 	public void anmelden(ZPatient p) {
@@ -22,18 +23,34 @@ public class FCFSListe implements WarteSchlange{
 	public ZPatient derNaechsteBitte() {
 		// TODO Auto-generated method stub
 		ZPatient ausgabe = null;
-		
-		if(anfang != null) {
-			ausgabe = anfang;
-		}
-		if(anfang.next != null) {
-			anfang = anfang.next;
-		} else {
+		System.out.println(count);
+		if(count == true && anfang == ende) {
+			anfang.next = null;
+			anfang = null;
+			ende.next = null;
+			ende = null;
+			count = false;
 			return null;
 		}
 		
 		
+		if(anfang == ende) {
+			count = true;
+		} else {
+			count = false;
+		}
+
+		if(anfang != null) {
+			ausgabe = anfang;
+			//anfang = null;
+		}
+		
+		if(anfang.next != null) {
+			anfang = anfang.next;			
+		} 
+		
 		return ausgabe;
+		
 	}
 
 }
