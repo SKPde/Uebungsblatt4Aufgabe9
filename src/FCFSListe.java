@@ -4,6 +4,8 @@ public class FCFSListe implements WarteSchlange{
 	public ZPatient anfang;
 	public ZPatient ende;
 	
+	private ZPatient drangewesen;
+	
 	boolean count = false;
 	
 	@Override
@@ -12,7 +14,8 @@ public class FCFSListe implements WarteSchlange{
 		if(anfang == null) {
 			anfang = p;
 			ende = p;
-			p.next = p;
+			p.next = null;
+			ende.next = null;
 		} else {
 			ende.next = p;
 			ende = p;
@@ -21,35 +24,17 @@ public class FCFSListe implements WarteSchlange{
 
 	@Override
 	public ZPatient derNaechsteBitte() {
-		// TODO Auto-generated method stub
 		ZPatient ausgabe = null;
-		System.out.println(count);
-		if(count == true && anfang == ende) {
-			anfang.next = null;
-			anfang = null;
-			ende.next = null;
-			ende = null;
-			count = false;
-			return null;
-		}
-		
-		
-		if(anfang == ende) {
-			count = true;
-		} else {
-			count = false;
-		}
-
 		if(anfang != null) {
 			ausgabe = anfang;
-			//anfang = null;
+			drangewesen = ausgabe;
+			anfang = anfang.next;
 		}
 		
-		if(anfang.next != null) {
-			anfang = anfang.next;			
-		} 
 		
 		return ausgabe;
+		// TODO Auto-generated method stub
+
 		
 	}
 
